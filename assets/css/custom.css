@@ -67,6 +67,7 @@ body.home::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     animation: hero-bg-float 20s ease-in-out infinite;
 }
 
@@ -79,13 +80,14 @@ body.home::after {
     right: 0;
     bottom: 0;
     z-index: -1;
+    width: 100vw;
+    height: 100vh;
     background: linear-gradient(135deg,
-        rgba(59, 130, 246, 0.1) 0%,
-        rgba(139, 92, 246, 0.1) 25%,
-        rgba(236, 72, 153, 0.1) 50%,
-        rgba(239, 68, 68, 0.1) 75%,
-        rgba(251, 146, 60, 0.1) 100%
-    );
+            rgba(59, 130, 246, 0.1) 0%,
+            rgba(139, 92, 246, 0.1) 25%,
+            rgba(236, 72, 153, 0.1) 50%,
+            rgba(239, 68, 68, 0.1) 75%,
+            rgba(251, 146, 60, 0.1) 100%);
     animation: hero-gradient-shift 15s ease-in-out infinite alternate;
     pointer-events: none;
 }
@@ -96,12 +98,11 @@ body.home::after {
 
 .dark body.home::after {
     background: linear-gradient(135deg,
-        rgba(29, 78, 216, 0.15) 0%,
-        rgba(91, 33, 182, 0.15) 25%,
-        rgba(157, 23, 77, 0.15) 50%,
-        rgba(153, 27, 27, 0.15) 75%,
-        rgba(194, 65, 12, 0.15) 100%
-    );
+            rgba(29, 78, 216, 0.15) 0%,
+            rgba(91, 33, 182, 0.15) 25%,
+            rgba(157, 23, 77, 0.15) 50%,
+            rgba(153, 27, 27, 0.15) 75%,
+            rgba(194, 65, 12, 0.15) 100%);
 }
 
 /* 移除下方内容的上边距 */
