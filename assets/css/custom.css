@@ -1,7 +1,7 @@
 /* 确保页面顶部没有空白 */
 body.home {
     overflow-x: hidden;
-    background-image: url('/background.svg');
+    background-image: url('../background.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
