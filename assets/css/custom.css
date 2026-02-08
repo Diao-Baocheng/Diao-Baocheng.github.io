@@ -96,7 +96,7 @@ body.home.scrolled.dark header * {
     text-align: center;
     color: #f8fafc;
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
-    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    font-family: "Inter", "SF Pro Display", -apple-system, system-ui, sans-serif;
 }
 
 .hero-typewriter span {
@@ -115,11 +115,11 @@ body.home.scrolled.dark header * {
     }
 
     30% {
-        width: 11ch;
+        width: 100%;
     }
 
     85% {
-        width: 11ch;
+        width: 100%;
     }
 
     100% {
