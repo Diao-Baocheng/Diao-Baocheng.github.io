@@ -1,6 +1,6 @@
 ---
 title: "About me"
-description: "个人简介与联系方式"
+description: "Personal introduction and contact information"
 ---
 
 ## 👋 Hello！
