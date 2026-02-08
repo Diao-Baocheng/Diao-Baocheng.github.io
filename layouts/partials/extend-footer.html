@@ -1,0 +1,2 @@
+{{ $heroBlur := resources.Get "js/hero-blur.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script type="text/javascript" src="{{ $heroBlur.RelPermalink }}" integrity="{{ $heroBlur.Data.Integrity }}"></script>
