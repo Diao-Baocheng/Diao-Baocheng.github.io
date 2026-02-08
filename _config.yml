@@ -24,3 +24,13 @@ author:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:你的邮箱"
+# 1. 必须开启这些插件，否则主题无法正常工作
+plugins:
+  - jekyll-include-cache  # 👈 报错就是因为缺了这一行
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+
+# 2. 检查远程主题配置是否正确
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
