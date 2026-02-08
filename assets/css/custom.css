@@ -1,6 +1,11 @@
 /* 确保页面顶部没有空白 */
 body.home {
     overflow-x: hidden;
+    background-image: url('/background.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 body.home main {
@@ -49,60 +54,6 @@ body.home.scrolled.dark header {
 
 body.home.scrolled.dark header * {
     color: white !important;
-}
-
-/* 背景卡片层钉在所有内容后面 */
-body.home::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    margin-left: calc(50% - 50vw);
-    background-image: url('/background.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    animation: hero-bg-float 20s ease-in-out infinite;
-}
-
-/* 彩色渐变叠加 */
-body.home::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(135deg,
-            rgba(59, 130, 246, 0.1) 0%,
-            rgba(139, 92, 246, 0.1) 25%,
-            rgba(236, 72, 153, 0.1) 50%,
-            rgba(239, 68, 68, 0.1) 75%,
-            rgba(251, 146, 60, 0.1) 100%);
-    animation: hero-gradient-shift 15s ease-in-out infinite alternate;
-    pointer-events: none;
-}
-
-.dark body.home::before {
-    opacity: 0.9;
-}
-
-.dark body.home::after {
-    background: linear-gradient(135deg,
-            rgba(29, 78, 216, 0.15) 0%,
-            rgba(91, 33, 182, 0.15) 25%,
-            rgba(157, 23, 77, 0.15) 50%,
-            rgba(153, 27, 27, 0.15) 75%,
-            rgba(194, 65, 12, 0.15) 100%);
 }
 
 /* 移除下方内容的上边距 */
@@ -189,28 +140,6 @@ body.home::after {
 @keyframes hero-caret {
     50% {
         border-color: transparent;
-    }
-}
-
-@keyframes hero-bg-float {
-
-    0%,
-    100% {
-        transform: scale(1) translateY(0);
-    }
-
-    50% {
-        transform: scale(1.05) translateY(-10px);
-    }
-}
-
-@keyframes hero-gradient-shift {
-    0% {
-        opacity: 0.8;
-    }
-
-    100% {
-        opacity: 0.4;
     }
 }
 
