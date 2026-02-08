@@ -31,7 +31,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.138.0
+      HUGO_VERSION: 0.154.5
     steps:
       - name: 安装Hugo CLI
         run: |
