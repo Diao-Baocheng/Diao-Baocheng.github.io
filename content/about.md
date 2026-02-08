@@ -1,6 +1,5 @@
 ---
 title: "About me"
-description: "Personal introduction and contact information"
 ---
 
 ## 👋 Hello！
