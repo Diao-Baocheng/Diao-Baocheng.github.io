@@ -1,3 +1,26 @@
-theme: jekyll-theme-minimal
-title: Octocat's homepage
-description: Bookmark this to keep an eye on my project updates!
+# 1. 网站基础信息
+title: "刁宝成的数字花园"
+name: "Diao Baocheng"
+description: "NTU | Biomedical Data Science"
+url: "https://你的用户名.github.io" 
+
+# 2. 皮肤设置 (推荐使用极简且专业的 Minimal Mistakes)
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+minimal_mistakes_skin: "air" # 可选皮肤: air, aqua, contrast, dark, dirt, sunrise
+
+# 3. 基础功能开启
+search: true           # 开启搜索
+paginate: 5            # 每页显示 5 篇文章
+words_per_minute: 200  # 计算阅读时间
+# 个人资料卡片
+author:
+  name   : "刁宝成"
+  avatar : "/assets/images/bio-photo.jpg" # 你可以把头像放进 assets/images 文件夹
+  bio    : "MS in Biomedical Data Science @ NTU. 专注于深度学习与统计学习。"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/你的用户名"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:你的邮箱"
