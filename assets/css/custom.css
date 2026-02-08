@@ -1,59 +1,174 @@
-/* 确保页面顶部没有空白 */
-body.home {
-    overflow-x: hidden;
-    background-image: url('../background.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+/* 全局护眼配色方案 - 白天/黑夜模式 */
+:root {
+    /* 白天模式 */
+    --bg-light: #F8FAFC;
+    /* 极淡灰蓝 */
+    --text-light: #1E293B;
+    /* 深岩灰 */
+    --accent-light: #10B981;
+    /* 大白菜绿 */
+    --code-bg-light: #F1F5F9;
+    --code-text-light: #0F172A;
+
+    /* 黑夜模式 */
+    --bg-dark: #0F172A;
+    /* 深海蓝黑 */
+    --text-dark: #F1F5F9;
+    /* 淡云朵灰 */
+    --accent-dark: #34D399;
+    /* 荧光绿 */
+    --code-bg-dark: #1E293B;
+    --code-text-dark: #F1F5F9;
 }
 
-body.home main {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
+/* 黑夜模式配色 */
+html.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    transition: all 0.4s ease;
 }
 
-/* 让header浮在hero上方并透明 */
-body.home header {
+/* 白天模式配色 */
+html:not(.dark) {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: all 0.4s ease;
+}
+
+/* Body 全局过渡与变量绑定 */
+body {
+    background-color: inherit;
+    color: inherit;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+/* 确保内容可见性 - 白天模式 */
+html:not(.dark) body,
+html:not(.dark) p,
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6,
+html:not(.dark) a {
+    color: var(--text-light);
+}
+
+/* 确保内容可见性 - 黑夜模式 */
+html.dark body,
+html.dark p,
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6,
+html.dark a {
+    color: var(--text-dark);
+}
+
+/* 移除菜单项active状态的样式变化 */
+.main-menu a span.active {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+/* ==================== 导航栏样式 ==================== */
+
+/* 导航栏基础样式 - 固定在顶部 */
+header.main-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    background: transparent !important;
-    backdrop-filter: blur(0);
-    transition: backdrop-filter 0.3s ease, background 0.3s ease;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s ease;
 }
 
-/* header内容在hero背景上使用白色 */
-body.home header * {
+/* 导航栏所有元素 - 白天模式用黑色 */
+html:not(.dark) header.main-header,
+html:not(.dark) header.main-header *,
+html:not(.dark) header.main-header a,
+html:not(.dark) header.main-header span {
+    color: var(--text-light) !important;
+}
+
+html:not(.dark) header.main-header svg {
+    fill: var(--text-light) !important;
+}
+
+/* 导航栏所有元素 - 黑夜模式用白色 */
+html.dark header.main-header,
+html.dark header.main-header *,
+html.dark header.main-header a,
+html.dark header.main-header span {
+    color: var(--text-dark) !important;
+}
+
+html.dark header.main-header svg {
+    fill: var(--text-dark) !important;
+}
+
+/* 滚动后添加毛玻璃效果 - 白天模式 */
+html:not(.dark).scrolled header.main-header {
+    background: rgba(248, 250, 252, 0.8);
+    backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid rgba(30, 41, 59, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* 滚动后添加毛玻璃效果 - 黑夜模式 */
+html.dark.scrolled header.main-header {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid rgba(241, 245, 249, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 给页面内容留出导航栏空间，避免被遮挡 */
+main {
+    padding-top: 5rem;
+}
+
+/* ==================== Hero页面特殊处理 ==================== */
+
+body:has(.hero-animated) {
+    overflow-x: hidden;
+}
+
+/* Hero页面header提升层级 */
+body:has(.hero-animated) header.main-header {
+    z-index: 101;
+}
+
+body:has(.hero-animated) main {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Hero区域初始状态header文字颜色 - 白天模式保持黑色，黑夜模式使用白色 */
+html:not(.scrolled):not(.dark) body:has(.hero-animated) header.main-header *,
+html:not(.scrolled):not(.dark) body:has(.hero-animated) header.main-header a,
+html:not(.scrolled):not(.dark) body:has(.hero-animated) header.main-header span {
+    color: var(--text-light) !important;
+}
+
+html:not(.scrolled):not(.dark) body:has(.hero-animated) header.main-header svg {
+    fill: var(--text-light) !important;
+}
+
+html:not(.scrolled).dark body:has(.hero-animated) header.main-header *,
+html:not(.scrolled).dark body:has(.hero-animated) header.main-header a,
+html:not(.scrolled).dark body:has(.hero-animated) header.main-header span {
     color: white !important;
 }
 
-body.home header svg {
+html:not(.scrolled).dark body:has(.hero-animated) header.main-header svg {
     fill: white !important;
-}
-
-/* 滚动时header添加背景并恢复正常颜色 */
-body.home.scrolled header {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.8) !important;
-}
-
-body.home.scrolled header * {
-    color: inherit !important;
-}
-
-body.home.scrolled header svg {
-    fill: currentColor !important;
-}
-
-body.home.scrolled.dark header {
-    background: rgba(0, 0, 0, 0.6) !important;
-}
-
-body.home.scrolled.dark header * {
-    color: white !important;
 }
 
 /* 移除下方内容的上边距 */
@@ -92,20 +207,17 @@ body.home.scrolled.dark header * {
 .hero-typewriter {
     margin: 0.25rem 0 1.75rem;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
-    color: #f8fafc;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+    color: #ffffff;
     font-family: "Inter", "SF Pro Display", -apple-system, system-ui, sans-serif;
-}
+    letter-spacing: 0.05em;
 
-.hero-typewriter span {
-    display: inline-block;
     overflow: hidden;
     white-space: nowrap;
     border-right: 2px solid rgba(248, 250, 252, 0.85);
     padding-right: 0.2rem;
-    animation: hero-typewriter 6s steps(11, end) infinite,
+    animation: hero-typewriter 6s steps(9, end) infinite,
         hero-caret 0.9s step-end infinite;
 }
 
@@ -115,11 +227,11 @@ body.home.scrolled.dark header * {
     }
 
     30% {
-        width: 100%;
+        width: 15ch;
     }
 
     85% {
-        width: 100%;
+        width: 15ch;
     }
 
     100% {
@@ -218,4 +330,187 @@ body.home.scrolled.dark header * {
     stroke: currentColor;
     stroke-width: 2;
     fill: none;
+}
+
+/* Navbar 样式 */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&family=Comfortaa:wght@400;700&display=swap');
+
+.navbar-brand-custom {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0;
+}
+
+.navbar-brand-custom:hover {
+    transform: translateY(-1px);
+}
+
+.navbar-avatar-custom {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid rgba(255, 255, 255, 0.6);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.navbar-brand-custom:hover .navbar-avatar-custom {
+    border-color: rgba(255, 255, 255, 0.95);
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-title-custom {
+    font-family: 'Comfortaa', 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+/* Hero页面未滚动时头像边框用白色 */
+html:not(.scrolled) body:has(.hero-animated) .navbar-avatar-custom {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* 滚动后头像边框适应模式 */
+html:not(.dark).scrolled .navbar-avatar-custom {
+    border-color: rgba(30, 41, 59, 0.3);
+}
+
+html.dark.scrolled .navbar-avatar-custom {
+    border-color: rgba(241, 245, 249, 0.3);
+}
+
+/* 代码块护眼配色 */
+/* 浅色模式代码块 */
+html:not(.dark) code,
+html:not(.dark) pre {
+    background-color: var(--code-bg-light) !important;
+    color: var(--code-text-light) !important;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+html:not(.dark) code {
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+html:not(.dark) pre {
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+/* 深色模式代码块 */
+html.dark code,
+html.dark pre {
+    background-color: var(--code-bg-dark) !important;
+    color: var(--code-text-dark) !important;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+html.dark code {
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+html.dark pre {
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+/* LaTeX 数学公式护眼配色 */
+/* 浅色模式 - 使用深色公式，便于阅读 */
+html:not(.dark) .katex {
+    color: var(--code-text-light);
+    transition: color 0.5s ease;
+}
+
+html:not(.dark) .katex-html {
+    filter: grayscale(5%);
+}
+
+/* 深色模式 - 使用浅色公式，易读性高 */
+html.dark .katex {
+    color: var(--code-text-dark);
+    transition: color 0.5s ease;
+    filter: invert(0.98) hue-rotate(180deg) brightness(1.05);
+}
+
+html.dark .katex-html {
+    filter: invert(0.98) hue-rotate(180deg) brightness(1.05);
+}
+
+/* 行内代码的间距优化 */
+p>code,
+li>code {
+    word-break: break-word;
+}
+
+/* 代码块行号对比度优化 */
+html:not(.dark) .highlight .ln {
+    color: #94a3b8;
+}
+
+html.dark .highlight .ln {
+    color: #64748b;
+}
+
+/* 引用块护眼配色 */
+html:not(.dark) blockquote {
+    border-left-color: #cbd5e1;
+    background-color: #f8fafc;
+    color: var(--text-light);
+    transition: all 0.5s ease;
+}
+
+html.dark blockquote {
+    border-left-color: #475569;
+    background-color: #1e293b;
+    color: var(--text-dark);
+    transition: all 0.5s ease;
+}
+
+/* 链接护眼配色 */
+html:not(.dark) a {
+    color: #0369a1;
+    transition: color 0.5s ease;
+}
+
+html:not(.dark) a:hover {
+    color: #0284c7;
+}
+
+html.dark a {
+    color: #38bdf8;
+    transition: color 0.5s ease;
+}
+
+html.dark a:hover {
+    color: #7dd3fc;
+}
+
+/* 表格护眼配色 */
+html:not(.dark) table {
+    border-color: #e2e8f0;
+    transition: border-color 0.5s ease;
+}
+
+html:not(.dark) table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+html.dark table {
+    border-color: #334155;
+    transition: border-color 0.5s ease;
+}
+
+html.dark table tr:nth-child(even) {
+    background-color: #1e293b;
 }

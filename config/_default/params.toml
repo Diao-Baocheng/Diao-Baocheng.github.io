@@ -41,7 +41,7 @@ giteaDefaultServer = "https://git.fsfe.org"
 forgejoDefaultServer = "https://v11.next.forgejo.org"
 
 [header]
-  layout = "basic" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur
+  layout = "custom" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur, custom
 
 [footer]
   showMenu = false
@@ -65,7 +65,7 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
 
 [author]
   name = "Diao Baocheng"
-  image = "img/touxiang.png"
+  image = "img/touxiang.jpg"
   links = [
     { email = "mailto:baochengdiao@gmail.com" },
     { github = "https://github.com/Diao-Baocheng" }

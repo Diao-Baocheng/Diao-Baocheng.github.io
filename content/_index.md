@@ -1,5 +1,5 @@
 ---
-title: "欢迎来到我的数字花园"
+title: "欢迎来到我的小世界"
 description: "NTU | Biomedical Data Science"
 ---
 
@@ -8,9 +8,3 @@ description: "NTU | Biomedical Data Science"
 我是刁宝成，目前在南洋理工大学攻读生物医学数据科学硕士学位。
 
 在这里，我会分享我的学习笔记、项目经验和思考。
-
-## 主要领域
-
-- 📊 **统计学习与深度学习**
-- 🧬 **生物医学数据分析**
-- 💻 **数据科学工具与方法**
