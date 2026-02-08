@@ -194,3 +194,90 @@ body.scrolled .hero-animated-bg::after {
         opacity: 0.4;
     }
 }
+
+/* 返回顶部按钮样式 */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 50;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(139, 92, 246, 0.9));
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 1), rgba(139, 92, 246, 1));
+}
+
+.scroll-to-top:active {
+    transform: translateY(-1px);
+}
+
+/* 显示按钮 */
+.scroll-to-top.show {
+    display: flex;
+    animation: slideUp 0.3s ease;
+}
+
+/* 隐藏按钮 */
+.scroll-to-top.hide {
+    animation: slideDown 0.3s ease forwards;
+}
+
+/* 暗色模式适配 */
+.dark .scroll-to-top {
+    background: linear-gradient(135deg, rgba(29, 78, 216, 0.9), rgba(91, 33, 182, 0.9));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dark .scroll-to-top:hover {
+    background: linear-gradient(135deg, rgba(29, 78, 216, 1), rgba(91, 33, 182, 1));
+    box-shadow: 0 6px 20px rgba(29, 78, 216, 0.5);
+}
+
+/* 动画 */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* svg图标样式 */
+.scroll-to-top svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
