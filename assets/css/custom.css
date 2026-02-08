@@ -96,7 +96,7 @@ body.home.scrolled.dark header * {
     text-align: center;
     color: #f8fafc;
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
-    font-family: "Songti SC", "STSong", "SimSun", serif;
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
 }
 
 .hero-typewriter span {
@@ -105,7 +105,7 @@ body.home.scrolled.dark header * {
     white-space: nowrap;
     border-right: 2px solid rgba(248, 250, 252, 0.85);
     padding-right: 0.2rem;
-    animation: hero-typewriter 6s steps(9, end) infinite,
+    animation: hero-typewriter 6s steps(11, end) infinite,
         hero-caret 0.9s step-end infinite;
 }
 
@@ -115,11 +115,11 @@ body.home.scrolled.dark header * {
     }
 
     30% {
-        width: 20ch;
+        width: 11ch;
     }
 
     85% {
-        width: 20ch;
+        width: 11ch;
     }
 
     100% {

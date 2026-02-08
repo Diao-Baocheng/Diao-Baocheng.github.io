@@ -59,12 +59,12 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   showMoreLinkDest = "/notes/"
   cardView = true
   cardViewScreenWidth = true
-  typewriterText = "知行合一 经世致用"
+  typewriterText = "知行合一、经世致用"
   layoutBackgroundBlur = false # only used when layout equals background
   disableHeroImageFilter = false # only used when layout equals hero
 
 [author]
-  name = "刁宝成"
+  name = "Diao Baocheng"
   image = "img/touxiang.png"
   links = [
     { email = "mailto:baochengdiao@gmail.com" },
