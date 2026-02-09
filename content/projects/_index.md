@@ -1,15 +1,15 @@
 ---
-title: "项目展示"
-description: "实践中的数据科学与生物医学应用"
+title: "Projects"
+description: "Data Science and Biomedical Applications in Practice"
 ---
 
-这里展示我参与或独立完成的项目。
+Here I showcase projects I have participated in or completed independently.
 
-## 🔬 生物医学项目
-正在整理中...
+## 🔬 Biomedical Projects
+Coming soon...
 
-## 📈 数据分析项目
-正在整理中...
+## 📈 Data Analysis Projects
+Coming soon...
 
-## 🛠️ 工具开发
-正在整理中...
+## 🛠️ Tool Development
+Coming soon...

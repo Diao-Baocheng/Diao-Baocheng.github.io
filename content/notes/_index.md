@@ -1,21 +1,21 @@
 ---
-title: "学习笔记"
-description: "系统化的知识整理"
+title: "Learning Notes"
+description: "Systematic Knowledge Organization"
 ---
 
-这里整理了我的系统化学习笔记，包括：
+Here are my systematically organized learning notes, including:
 
-## 📊 统计学习
-- 机器学习基础
-- 深度学习理论
-- 统计推断方法
+## 📊 Statistical Learning
+- Machine Learning Fundamentals
+- Deep Learning Theory
+- Statistical Inference Methods
 
-## 🧬 生物信息学
-- 基因组数据分析
-- 生物医学数据处理
-- 计算生物学
+## 🧬 Bioinformatics
+- Genomic Data Analysis
+- Biomedical Data Processing
+- Computational Biology
 
-## 💻 编程与工具
-- Python 数据科学
-- R 统计分析
-- 工具与最佳实践
+## 💻 Programming & Tools
+- Python Data Science
+- R Statistical Analysis
+- Tools & Best Practices

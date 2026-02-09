@@ -17,11 +17,51 @@
             <span class="navbar-title-custom">Big Cabbage</span>
         </a>
 
-        <!-- Menu items (right side) -->
-        <div class="flex items-center ms-auto">
+        <!-- Menu items and language switcher (right side) -->
+        <div class="flex items-center ms-auto gap-4">
+            <!-- Desktop Menu -->
             <div class="hidden md:flex">
                 {{ partial "header/components/desktop-menu.html" . }}
             </div>
+
+            <!-- Language Switcher -->
+            <div class="flex items-center justify-center gap-1">
+                {{ $page := . }}
+                {{ $currentLang := .Lang }}
+                {{ $langCount := len .Site.Languages }}
+                {{ range $index, $lang := .Site.Languages }}
+                {{ if eq $lang.Lang $currentLang }}
+                <span
+                    class="px-2 py-1 text-sm font-semibold rounded-md bg-primary-200 text-primary-600 dark:bg-primary-800 dark:text-primary-300">
+                    {{ $lang.Params.displayName }}
+                </span>
+                {{ else }}
+                {{ $translationList := where $page.Translations "Lang" $lang.Lang }}
+                {{ if gt (len $translationList) 0 }}
+                {{ $translation := index $translationList 0 }}
+                <a href="{{ $translation.RelPermalink }}"
+                    class="px-2 py-1 text-sm hover:font-semibold rounded-md hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors">
+                    {{ $lang.Params.displayName }}
+                </a>
+                {{ else }}
+                {{ $homeTranslations := where $page.Site.Home.AllTranslations "Language.Lang" $lang.Lang }}
+                {{ $homeLink := "/" }}
+                {{ if gt (len $homeTranslations) 0 }}
+                {{ $homeLink = (index $homeTranslations 0).RelPermalink }}
+                {{ end }}
+                <a href="{{ $homeLink }}"
+                    class="px-2 py-1 text-sm hover:font-semibold rounded-md hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors">
+                    {{ $lang.Params.displayName }}
+                </a>
+                {{ end }}
+                {{ end }}
+                {{ if lt (add $index 1) $langCount }}
+                <span class="text-gray-400 dark:text-gray-600">/</span>
+                {{ end }}
+                {{ end }}
+            </div>
+
+            <!-- Mobile Menu -->
             <div class="flex md:hidden">
                 {{ partial "header/components/mobile-menu.html" . }}
             </div>

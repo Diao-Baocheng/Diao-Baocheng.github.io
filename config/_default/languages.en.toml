@@ -2,7 +2,7 @@ disabled = false
 languageCode = "en"
 languageName = "English"
 weight = 1
-title = "刁宝成的数字花园"
+title = "Big Cabbage's Blog"
 
 [params]
   displayName = "EN"
@@ -14,7 +14,7 @@ title = "刁宝成的数字花园"
   # description = "My awesome website"
   # copyright = "Copy, _right?_ :thinking_face:"
 [params.hero]
-  title = "你好，我是刁宝成"
+  title = "Big Cabbage's Blog"
   subtitle = "南洋理工大学 (NTU) | 生物医学数据科学在读"
   content = "专注于深度学习、数学逻辑与生物信息的交叉探索。这里是我记录学习历程与思考的角落。"
 # [params.author]

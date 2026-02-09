@@ -1,0 +1,23 @@
+disabled = false
+languageCode = "zh"
+languageName = "中文"
+weight = 2
+title = "Big Cabbage's Blog"
+
+[params]
+  displayName = "中"
+  isoCode = "zh"
+  rtl = false
+  dateFormat = "2006年1月2日"
+  logo = "img/touxiang.jpg"
+
+[params.hero]
+  title = "Big Cabbage's Blog"
+  subtitle = "南洋理工大学 (NTU) | 生物医学数据科学在读"
+  content = "专注于深度学习、数学逻辑与生物信息的交叉探索。这里是我记录学习历程与思考的角落。"
+
+[params.author]
+  name = "刁宝成"
+
+[params.footer]
+  copyright = "© { year } 刁宝成"

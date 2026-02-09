@@ -87,6 +87,8 @@ header.main-header {
     background: transparent;
     border-bottom: 1px solid transparent;
     transition: all 0.4s ease;
+    padding-left: 6rem;
+    padding-right: 6rem;
 }
 
 /* 导航栏所有元素 - 白天模式用黑色 */
@@ -365,7 +367,7 @@ html:not(.scrolled).dark body:has(.hero-animated) header.main-header svg {
 }
 
 .navbar-title-custom {
-    font-family: 'Comfortaa', 'Poppins', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -513,4 +515,43 @@ html.dark table {
 
 html.dark table tr:nth-child(even) {
     background-color: #1e293b;
+}
+
+/* ==================== 语言切换按钮样式 ==================== */
+
+/* 语言切换容器 */
+.main-header [class*="language"],
+.main-header>div>div>div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+}
+
+/* 当前语言按钮 */
+.main-header span.font-semibold {
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+/* 非当前语言链接 */
+.main-header a[href*="/zh/"],
+.main-header a[href*="/en/"] {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 白天模式下的悬停效果 */
+html:not(.dark) .main-header a[href*="/zh/"]:hover,
+html:not(.dark) .main-header a[href*="/en/"]:hover {
+    font-weight: 600;
+    color: var(--accent-light);
+}
+
+/* 黑夜模式下的悬停效果 */
+html.dark .main-header a[href*="/zh/"]:hover,
+html.dark .main-header a[href*="/en/"]:hover {
+    font-weight: 600;
+    color: var(--accent-dark);
 }

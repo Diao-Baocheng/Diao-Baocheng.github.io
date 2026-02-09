@@ -10,6 +10,12 @@ theme = "blowfish"
 enableRobotsTXT = true
 summaryLength = 0
 
+[languages]
+  [languages.en]
+    weight = 1
+  [languages.zh]
+    weight = 2
+
 buildDrafts = false
 buildFuture = false
 

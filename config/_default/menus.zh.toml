@@ -1,0 +1,25 @@
+# -- 主菜单 --
+# 主菜单显示在页面顶部的标题栏中。
+
+[[main]]
+  name = "首页"
+  pageRef = "/"
+  weight = 10
+
+[[main]]
+  name = "笔记"
+  pageRef = "notes"
+  weight = 20
+
+[[main]]
+  name = "项目"
+  pageRef = "projects"
+  weight = 30
+
+[[main]]
+  name = "关于"
+  pageRef = "about"
+  weight = 40
+
+# -- 页脚菜单 --
+# 页脚菜单显示在页面底部，版权声明之前。
