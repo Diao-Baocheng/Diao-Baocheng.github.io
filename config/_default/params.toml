@@ -71,7 +71,7 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
     { github = "https://github.com/Diao-Baocheng" }
   ]
 
-copyright = "© { year } 刁宝成"
+copyright = "© {year} 刁宝成"
 
 [article]
   showDate = true

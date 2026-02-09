@@ -15,8 +15,8 @@ title = "Big Cabbage's Blog"
   # copyright = "Copy, _right?_ :thinking_face:"
 [params.hero]
   title = "Big Cabbage's Blog"
-  subtitle = "南洋理工大学 (NTU) | 生物医学数据科学在读"
-  content = "专注于深度学习、数学逻辑与生物信息的交叉探索。这里是我记录学习历程与思考的角落。"
+  subtitle = "Nanyang Technological University (NTU) | Biomedical Data Science"
+  content = "Exploring the intersection of deep learning, mathematical logic, and bioinformatics. This is where I document my learning journey and reflections."
 # [params.author]
 #   name = "Your name here"
 #   email = "youremail@example.com"

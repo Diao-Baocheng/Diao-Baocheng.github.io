@@ -20,4 +20,4 @@ title = "Big Cabbage's Blog"
   name = "刁宝成"
 
 [params.footer]
-  copyright = "© { year } 刁宝成"
+  copyright = "© {year} 刁宝成"
