@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 加入 FontAwesome 支持一下图标 (可选，这里用 emoji 代替以保持轻量) -->
+    <title>史莱姆养成物语</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="resource">
+                <span class="icon">🪙</span>
+                <span id="coins">0</span>
+            </div>
+            <div class="resource">
+                <span class="icon">💎</span>
+                <span id="gems">0</span>
+            </div>
+        </header>
+
+        <!-- 导航标签栏 -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-target="farm-view">🏠 农场</button>
+            <button class="tab-btn" data-target="shop-view">🛒 商店</button>
+        </nav>
+
+        <main id="farm-view" class="view active">
+            <div class="slime-container">
+                <div id="slime" class="slime normal"></div>
+                <div id="slime-name">果冻史莱姆 (Lv.1)</div>
+            </div>
+
+            <div class="stats-card">
+                <div class="stat-row">
+                    <span>经验值 (EXP)</span>
+                    <span id="exp-text">0 / 100</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="exp-fill" class="fill exp-fill"></div>
+                </div>
+
+                <div class="stat-row">
+                    <span>体力 (Stamina)</span>
+                    <span id="stamina-text">10 / 10</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="stamina-fill" class="fill stamina-fill"></div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="btn-feed" class="btn primary">
+                    投喂 (消耗1体力)
+                </button>
+                <button id="btn-feed-gem" class="btn premium" style="background-color: #9b59b6;">
+                    高级钻石餐 (消耗1💎)
+                </button>
+                <!-- 预留的商业化广告位 -->
+                <button id="btn-ad-stamina" class="btn ad">
+                    📺 看广告回满体力
+                </button>
+            </div>
+
+            <div class="log-container">
+                <div id="log" class="log-list">
+                    <div class="log-item system">欢迎来到史莱姆农场！</div>
+                </div>
+            </div>
+        </main>
+
+        <main id="shop-view" class="view hidden">
+            <div class="shop-container">
+                <h2>能力提升 (消耗 🪙)</h2>
+
+                <div class="shop-item">
+                    <div class="shop-info">
+                        <h3>💪 体质强化 <span id="lvl-max-stamina" class="shop-lvl">Lv.0</span></h3>
+                        <p>提升体力上限 <span class="highlight">+5</span></p>
+                    </div>
+                    <button id="btn-buy-max-stamina" class="btn buy">
+                        <span id="cost-max-stamina">100</span> 🪙
+                    </button>
+                </div>
+
+                <div class="shop-item">
+                    <div class="shop-info">
+                        <h3>⚡ 新陈代谢 <span id="lvl-regen" class="shop-lvl">Lv.0</span></h3>
+                        <p>体力恢复速度 <span class="highlight">-0.1s</span></p>
+                    </div>
+                    <button id="btn-buy-regen" class="btn buy">
+                        <span id="cost-regen">150</span> 🪙
+                    </button>
+                </div>
+
+                <h2>自动化 (放置收益)</h2>
+
+                <div class="shop-item special">
+                    <div class="shop-info">
+                        <h3>🤖 自动投喂机 <span id="lvl-auto" class="shop-lvl">Lv.0</span></h3>
+                        <p>每秒自动获得经验 <span class="highlight">+5</span></p>
+                    </div>
+                    <button id="btn-buy-auto" class="btn buy special-buy">
+                        <span id="cost-auto">500</span> 🪙
+                    </button>
+                </div>
+
+                <div class="shop-footer">
+                    <button id="btn-reset" class="btn danger" style="margin-top:20px; width:100%; opacity: 0.5;">重新开始游戏
+                        (清除存档)</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>
