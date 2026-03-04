@@ -26,5 +26,10 @@
   pageRef = "about"
   weight = 40
 
+[[main]]
+  name = "小游戏"
+  url = "/games/slime-farm/index.html"
+  weight = 50
+
 # -- 页脚菜单 --
 # 页脚菜单显示在页面底部，版权声明之前。

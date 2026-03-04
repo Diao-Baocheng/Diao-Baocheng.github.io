@@ -26,6 +26,11 @@
   pageRef = "about"
   weight = 40
 
+[[main]]
+  name = "Games"
+  url = "/games/slime-farm/index.html"
+  weight = 50
+
 # -- Footer Menu --
 [[footer]]
 #  name = "Tags"
