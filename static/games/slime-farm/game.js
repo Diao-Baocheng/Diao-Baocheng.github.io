@@ -235,6 +235,128 @@ function feed(e) {
         addLog(`✨ 暴击！史莱姆吐出了一颗钻石！`, "critical");
         spawnFloatingText("+1 💎", "crit", clickX, clickY - 40);
         spawnParticles(clickX, clickY, 15, '#e056fd');
+    } else {
+        spawnFloatingText(`+${earnedCoins}`, "", clickX, clickY - 20);
+        spawnParticles(clickX, clickY, 8, '#f1c40f');
+    }
+
+    // 更新状态
+    state.coins += earnedCoins;
+    gainExp(baseExp, clickX, clickY);
+
+    updateUI();
+}
+
+// 1.5 行为：高级投喂 (消耗钻石)
+function feedGem(e) {
+    if (state.gems < 1) {
+        addLog("钻石不足！", "system");
+        return;
+    }
+
+    // 消耗钻石，不需要消耗体力
+    state.gems -= 1;
+
+    const baseExp = 100 * state.slime.level; // 巨大的经验收益
+    let earnedCoins = 100 * slimeTypes.find(t => t.id === state.slime.type).coinMultiplier * state.slime.level;
+
+    const rect = els.slime.getBoundingClientRect();
+    const clickX = e.clientX || rect.left + rect.width / 2;
+    const clickY = e.clientY || rect.top + rect.height / 2;
+
+    els.slime.classList.remove('clicked');
+    void els.slime.offsetWidth;
+    els.slime.classList.add('clicked');
+
+    spawnFloatingText(`巨量收益!`, "gem", clickX, clickY - 40);
+    spawnFloatingText(`+${baseExp} EXP`, "exp", clickX, clickY - 20);
+    spawnParticles(clickX, clickY, 30, '#9b59b6');
+
+    state.coins += earnedCoins;
+    addLog(`💎 使用钻石投喂了豪华大餐！史莱姆非常满足！`, "rare");
+    gainExp(baseExp, clickX, clickY);
+    updateUI();
+}
+
+// 2. 逻辑：经验与升级
+function gainExp(amount, x, y) {
+    state.slime.exp += amount;
+
+    if (x && y && amount < 50) { // 防止与钻石投喂的文字重叠
+        spawnFloatingText(`+${amount} EXP`, "exp", x + 30, y - 10);
+    }
+
+    if (state.slime.exp >= state.slime.maxExp) {
+        levelUp();
+    }
+}
+
+// 3. 概率学应用：升级与变异
+function levelUp() {
+    state.slime.level += 1;
+    state.slime.exp -= state.slime.maxExp;
+    state.slime.maxExp = Math.floor(state.slime.maxExp * 1.5); // 数值膨胀
+
+    // 满血复活
+    state.stamina.max += 2;
+    state.stamina.current = state.stamina.max;
+
+    addLog(`🎉 升级了！当前等级 Lv.${state.slime.level}`, "rare");
+
+    // 变异概率判定 (根据权重随机)
+    if (state.slime.level % 3 === 0) {
+        mutate();
+    }
+}
+
+function mutate() {
+    const totalWeight = slimeTypes.reduce((sum, type) => sum + type.weight, 0);
+    let randomNum = Math.random() * totalWeight;
+
+    let newType = slimeTypes[0];
+    for (const type of slimeTypes) {
+        if (randomNum < type.weight) {
+            newType = type;
+            break;
+        }
+        randomNum -= type.weight;
+    }
+
+    if (newType.id !== state.slime.type) {
+        state.slime.type = newType.id;
+        state.slime.name = newType.name;
+        addLog(`🧬 基因突变！史莱姆进化成了 ${newType.name}!`, "rare");
+    }
+}
+
+// 4. 商业化挂钩：看广告恢复体力
+function watchAdForStamina() {
+    addLog(`📺 正在播放广告...`, "system");
+    els.btnAdStamina.disabled = true;
+    els.btnAdStamina.textContent = "广告播放中...";
+
+    // 模拟广告播放 (3秒)
+    setTimeout(() => {
+        state.stamina.current = state.stamina.max;
+        addLog(`🎁 广告观看完毕！体力已回满！`, "rare");
+        els.btnAdStamina.disabled = false;
+        els.btnAdStamina.textContent = "�� 看广告回满体力";
+        updateUI();
+    }, 3000);
+}
+
+// 5. 游戏引擎循环 (Game Loop) - 处理自然恢复
+function gameLoop() {
+    const now = Date.now();
+    // 每 1000ms 恢复 1 点体力 (如果不足最大值)
+    if (now - state.stamina.lastRegenTime >= state.stamina.regenRate) {
+        if (state.stamina.current < state.stamina.max) {
+            state.stamina.current += 1;
+            updateUI();
+        }
+        state.stamina.lastRegenTime = now;
+    }
+
     // 自动投喂机逻辑：按秒触发
     const currentSecond = Math.floor(now / 1000);
     const lastSavedSecond = Math.floor(state.lastSaveTime / 1000);
@@ -262,6 +384,9 @@ function feed(e) {
     }
     
     // 定期存档 (每 10 秒)
+    if (now - state.lastSaveTime > 10000) {
+        saveGame();
+    }
     if (now - state.lastSaveTime > 10000) {
         saveGame();
     }
